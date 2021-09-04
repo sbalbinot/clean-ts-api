@@ -1,4 +1,4 @@
-import { Decrypter } from '../../protocols/criptography/decrypter'
+import { Decrypter } from '../../protocols/cryptography/decrypter'
 import { DbLoadAccountByToken } from './db-load-account-by-token'
 
 const makeDecrypter = (): Decrypter => {
