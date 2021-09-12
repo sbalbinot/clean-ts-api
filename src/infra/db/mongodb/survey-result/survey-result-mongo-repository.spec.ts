@@ -2,7 +2,7 @@ import { SurveyResultMongoRepository } from './survey-result-mongo-repository'
 import { MongoHelper } from '../helpers/mongo-helper'
 import { SurveyModel } from '@/domain/models/survey'
 import { AccountModel } from '@/domain/models/account'
-import { Collection } from 'mongodb'
+import { Collection, ObjectId } from 'mongodb'
 
 let accountCollection: Collection
 let surveyCollection: Collection
@@ -15,7 +15,7 @@ const makeAccount = async (): Promise<AccountModel> => {
     password: 'any_password'
   })
   const account = await accountCollection.findOne(result.insertedId)
-  return account as AccountModel
+  return account && MongoHelper.map(account)
 }
 
 const makeSurvey = async (): Promise<SurveyModel> => {
@@ -33,7 +33,7 @@ const makeSurvey = async (): Promise<SurveyModel> => {
     date: new Date()
   })
   const survey = await surveyCollection.findOne(result.insertedId)
-  return survey as SurveyModel
+  return survey && MongoHelper.map(survey)
 }
 
 const makeSut = (): SurveyResultMongoRepository => {
@@ -78,8 +78,8 @@ describe('SurveyResult Mongo Repository', () => {
       const account = await makeAccount()
       const survey = await makeSurvey()
       const result = await surveyResultCollection.insertOne({
-        surveyId: survey.id,
-        accountId: account.id,
+        surveyId: new ObjectId(survey.id),
+        accountId: new ObjectId(account.id),
         answer: survey.answers[0].answer,
         date: new Date()
       })
@@ -90,6 +90,8 @@ describe('SurveyResult Mongo Repository', () => {
         answer: survey.answers[1].answer,
         date: new Date()
       })
+      console.log('result', result)
+      console.log('surveyResult', surveyResult)
       expect(surveyResult).toBeTruthy()
       expect(surveyResult.id).toEqual(result.insertedId)
       expect(surveyResult.answer).toBe(survey.answers[1].answer)
