@@ -1,9 +1,9 @@
 import { AccountModel } from '@/domain/models/account'
 
 // Omit creates the same class but without the fields that are passed through param
-// In this case AddAccountModel is equal to AccountModel without property 'id'
-export type AddAccountModel = Omit<AccountModel, 'id'>
+// In this case AddAccountParams is equal to AccountModel without property 'id'
+export type AddAccountParams = Omit<AccountModel, 'id'>
 
 export interface AddAccount {
-  add: (account: AddAccountModel) => Promise<AccountModel>
+  add: (account: AddAccountParams) => Promise<AccountModel>
 }
