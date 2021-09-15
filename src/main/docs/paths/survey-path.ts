@@ -11,7 +11,7 @@ export const surveyPath = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/schemas/surveysSchema'
+              $ref: '#/schemas/surveys'
             }
           }
         }
@@ -37,7 +37,7 @@ export const surveyPath = {
       content: {
         'application/json': {
           schema: {
-            $ref: '#/schemas/addSurveyParamsSchema'
+            $ref: '#/schemas/addSurveyParams'
           }
         }
       }

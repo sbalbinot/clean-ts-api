@@ -3,7 +3,7 @@ export const forbidden = {
   content: {
     'application/json': {
       schema: {
-        $ref: '#/schemas/errorSchema'
+        $ref: '#/schemas/error'
       }
     }
   }

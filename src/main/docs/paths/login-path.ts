@@ -6,7 +6,7 @@ export const loginPath = {
       content: {
         'application/json': {
           schema: {
-            $ref: '#/schemas/loginParamsSchema'
+            $ref: '#/schemas/loginParams'
           }
         }
       }
@@ -17,7 +17,7 @@ export const loginPath = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/schemas/accountSchema'
+              $ref: '#/schemas/account'
             }
           }
         }
