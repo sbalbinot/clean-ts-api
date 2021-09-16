@@ -70,14 +70,16 @@ describe('SurveyResult Mongo Repository', () => {
         date: new Date()
       })
       expect(surveyResult).toBeTruthy()
-      expect(surveyResult.id).toBeTruthy()
-      expect(surveyResult.answer).toBe(survey.answers[0].answer)
+      expect(surveyResult.surveyId).toEqual(survey.id)
+      expect(surveyResult.answers[0].answer).toBe(survey.answers[0].answer)
+      expect(surveyResult.answers[0].count).toBe(1)
+      expect(surveyResult.answers[0].percent).toBe(100)
     })
 
     test('Should update survey result if its not new', async () => {
       const account = await makeAccount()
       const survey = await makeSurvey()
-      const result = await surveyResultCollection.insertOne({
+      await surveyResultCollection.insertOne({
         surveyId: new ObjectId(survey.id),
         accountId: new ObjectId(account.id),
         answer: survey.answers[0].answer,
@@ -90,11 +92,11 @@ describe('SurveyResult Mongo Repository', () => {
         answer: survey.answers[1].answer,
         date: new Date()
       })
-      console.log('result', result)
-      console.log('surveyResult', surveyResult)
       expect(surveyResult).toBeTruthy()
-      expect(surveyResult.id).toEqual(result.insertedId)
-      expect(surveyResult.answer).toBe(survey.answers[1].answer)
+      expect(surveyResult.surveyId).toEqual(survey.id)
+      expect(surveyResult.answers[0].answer).toBe(survey.answers[1].answer)
+      expect(surveyResult.answers[0].count).toBe(1)
+      expect(surveyResult.answers[0].percent).toBe(100)
     })
   })
 })
