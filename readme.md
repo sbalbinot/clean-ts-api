@@ -1,3 +1,6 @@
+![Build Status](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+[![Coverage Status](https://codecov.io/gh/sbalbinot/clean-ts-api/branch/master/graph/badge.svg?token=MTWDQO5IT7)](https://codecov.io/gh/sbalbinot/clean-ts-api)
+
 # **Clean Node API**
 
 Essa API faz parte do treinamento do professor Rodrigo Manguinho (Mango) na Udemy.
