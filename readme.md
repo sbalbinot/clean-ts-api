@@ -1,6 +1,3 @@
-[![Build Status](https://app.travis-ci.com/sbalbinot/clean-ts-api.svg?branch=master)](https://app.travis-ci.com/sbalbinot/clean-ts-api)
-[![Coverage Status](https://coveralls.io/repos/github/sbalbinot/clean-ts-api/badge.svg)](https://coveralls.io/github/sbalbinot/clean-ts-api)
-
 # **Clean Node API**
 
 Essa API faz parte do treinamento do professor Rodrigo Manguinho (Mango) na Udemy.
