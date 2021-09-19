@@ -1,4 +1,4 @@
-![Build Status](https://github.com/github/docs/actions/workflows/main.yml/badge.svg)
+[![Build Status](https://github.com/sbalbinot/clean-ts-api/actions/workflows/main.yml/badge.svg)](https://github.com/sbalbinot/clean-ts-api/actions)
 [![Coverage Status](https://codecov.io/gh/sbalbinot/clean-ts-api/branch/master/graph/badge.svg?token=MTWDQO5IT7)](https://codecov.io/gh/sbalbinot/clean-ts-api)
 
 # **Clean Node API**
