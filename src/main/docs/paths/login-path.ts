@@ -13,7 +13,7 @@ export const loginPath = {
     },
     responses: {
       200: {
-        description: 'Returns an access token.',
+        description: 'Returns an authentication object.',
         content: {
           'application/json': {
             schema: {
