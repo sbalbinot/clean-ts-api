@@ -1,12 +1,30 @@
 import { MongoHelper, QueryBuilder } from '@/infra/db'
 import { SurveyModel } from '@/domain/models'
-import { AddSurveyRepository, LoadSurveysRepository, LoadSurveyByIdRepository } from '@/data/protocols'
+import { AddSurveyRepository, CheckSurveyByIdRepository, LoadSurveyByIdRepository, LoadSurveysRepository } from '@/data/protocols'
 import { ObjectId } from 'mongodb'
 
-export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRepository, LoadSurveyByIdRepository {
+export class SurveyMongoRepository implements AddSurveyRepository, CheckSurveyByIdRepository, LoadSurveyByIdRepository, LoadSurveysRepository {
   async add (data: AddSurveyRepository.Params): Promise<void> {
     const surveyCollection = await MongoHelper.getColletion('surveys')
     await surveyCollection.insertOne(data)
+  }
+
+  async checkById (id: string): Promise<CheckSurveyByIdRepository.Result> {
+    const surveyCollection = await MongoHelper.getColletion('surveys')
+    const survey = await surveyCollection.findOne({
+      _id: new ObjectId(id)
+    }, {
+      projection: {
+        _id: 1
+      }
+    })
+    return survey !== undefined && survey !== null
+  }
+
+  async loadById (id: string): Promise<LoadSurveyByIdRepository.Result> {
+    const surveyCollection = await MongoHelper.getColletion('surveys')
+    const survey = await surveyCollection.findOne({ _id: new ObjectId(id) })
+    return survey && MongoHelper.map(survey)
   }
 
   async loadAll (accountId: string): Promise<SurveyModel[]> {
@@ -40,11 +58,5 @@ export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRe
       .build()
     const surveys = await surveyCollection.aggregate(query).toArray()
     return MongoHelper.mapCollection(surveys)
-  }
-
-  async loadById (id: string): Promise<LoadSurveyByIdRepository.Result> {
-    const surveyCollection = await MongoHelper.getColletion('surveys')
-    const survey = await surveyCollection.findOne({ _id: new ObjectId(id) })
-    return survey && MongoHelper.map(survey)
   }
 }
