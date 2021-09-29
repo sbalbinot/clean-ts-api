@@ -1,5 +1,7 @@
 import typeDefs from '@/main/graphql/type-defs'
 import resolvers from '@/main/graphql/resolvers'
+import { authDirectiveTransformer } from '@/main/graphql/directives'
+import { makeExecutableSchema } from '@graphql-tools/schema'
 import { ApolloServer } from 'apollo-server-express'
 import { GraphQLError } from 'graphql'
 
@@ -22,9 +24,12 @@ const checkError = (error: GraphQLError, errorName: string): boolean => {
   return [error.name, error.originalError?.name].some(name => name === errorName)
 }
 
+let schema = makeExecutableSchema({ resolvers, typeDefs })
+schema = authDirectiveTransformer(schema)
+
 export const setupApolloServer = (): ApolloServer => new ApolloServer({
-  resolvers,
-  typeDefs,
+  schema,
+  context: ({ req }) => ({ req }),
   plugins: [{
     requestDidStart: async () => ({
       willSendResponse: async ({ response, errors }) => handleErrors(response, errors)
