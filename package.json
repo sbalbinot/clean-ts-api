@@ -1,8 +1,10 @@
 {
   "name": "clean-node-api",
   "version": "1.8.8",
-  "description": "",
-  "main": "index.js",
+  "description": "NodeJs Rest API and GraphQL using TDD, Clean Architecture, Typescript and Design Patterns",
+  "author": "Stephano Balbinot",
+  "license": "GPL-3.0-or-later",
+  "repository": "github:sbalbinot/clean-ts-api",
   "scripts": {
     "start": "node dist/main/server.js",
     "debug": "nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/main/server.js",
@@ -18,9 +20,6 @@
     "test:staged": "npm test -- --findRelatedTests",
     "test:ci": "npm test -- --coverage"
   },
-  "keywords": [],
-  "author": "Stephano Balbinot",
-  "license": "GPL-3.0-or-later",
   "devDependencies": {
     "@shelf/jest-mongodb": "^2.0.1",
     "@types/bcrypt": "^5.0.0",
