@@ -2,13 +2,13 @@ import { LogMongoRepository, MongoHelper } from '@/infra/db'
 import { Collection } from 'mongodb'
 import faker from 'faker'
 
+let errorCollection: Collection
+
 const makeSut = (): LogMongoRepository => {
   return new LogMongoRepository()
 }
 
 describe('LogMongoRepository', () => {
-  let errorCollection: Collection
-
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
   })
