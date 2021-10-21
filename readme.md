@@ -3,7 +3,7 @@
 
 # **Clean Node API**
 
-This is an Survey API built to show how to create a decoupled and well-defined architecture, using TDD (Test Driven Development) as work methodology, Clean Architecture for tiering distribution of responsibilities, always following SOLID principles and, whenever possible, applying Desing Patterns to solve common problems.
+This is a Survey API built to show how to create a decoupled and well-defined architecture, using TDD (Test Driven Development) as work methodology, Clean Architecture for tiering distribution of responsibilities, always following SOLID principles and, whenever possible, applying Desing Patterns to solve common problems.
 It is based on Rodrigo Manguinho's [course](https://www.udemy.com/course/tdd-com-mango/?referralCode=B53CE5CA2B9AFA5A6FA1) on Udemy.
 
 > ## APIs:
