@@ -1,6 +1,6 @@
 {
   "name": "clean-node-api",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "NodeJs Rest API and GraphQL using TDD, Clean Architecture, Typescript and Design Patterns",
   "author": "Stephano Balbinot",
   "license": "GPL-3.0-or-later",
